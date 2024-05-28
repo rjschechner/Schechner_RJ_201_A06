@@ -182,7 +182,6 @@ ie: 91 rounds to 90; 173 rounds to 200; 1450 rounds to 1000
 Hint: use `MARGIN = 1:2` to apply the function to each value instead of only a row/col.
 
 ```{r}
-print(mat_rand)
 rounding_function <- function(x){
   if(nchar(x) ==2){
     return(round(x,-1))
@@ -239,9 +238,6 @@ CO <- max_temps[max_temps$state == "CO", ]
 OH <- max_temps[max_temps$state == "OH", ]
 VA <- max_temps[max_temps$state == "VA", ]
 
-print(CO)
-print(OH)
-
 ```
 
 
@@ -265,12 +261,8 @@ Note: This code should still run successfully even if the numbers were to change
 colnames(CO)
 print(CO)
 monthly_temps <- CO[, 3:14]
-median <-apply(monthly_temps, 1, median, na.rm = TRUE)
-overall_median <- median(median, na.rm = TRUE)
-(print(overall_median))
-
+median <-apply(monthly_temps, 1, median)
 max_index <- which.max(median)
-
 min_index <- which.min(median)
 
 year_max_temp <- CO$year[max_index]
